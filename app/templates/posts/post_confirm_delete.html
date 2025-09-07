@@ -1,0 +1,8 @@
+<h1>"{{ post.title }}" postini o‘chirishni xohlaysizmi?</h1>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">✅ Ha, o‘chir</button>
+</form>
+
+<a href="{% url 'post_list' %}">❌ Yo‘q, orqaga</a>

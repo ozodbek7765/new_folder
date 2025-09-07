@@ -1,0 +1,17 @@
+<h1>Postlar ro‘yxati</h1>
+<a href="{% url 'post_create' %}">➕ Yangi post qo‘shish</a>
+<hr>
+
+{% for post in posts %}
+    <h2><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
+    <p>{{ post.content|truncatewords:20 }}</p>
+    {% if post.image %}
+        <img src="{{ post.image.url }}" alt="{{ post.title }}" width="150">
+    {% endif %}
+    <p>Telefon: {{ post.phone }}</p>
+    <p><a href="{% url 'post_update' post.pk %}">✏️ Tahrirlash</a> |
+       <a href="{% url 'post_delete' post.pk %}">🗑️ O‘chirish</a></p>
+    <hr>
+{% empty %}
+    <p>Hozircha postlar yo‘q.</p>
+{% endfor %}
